@@ -93,7 +93,7 @@ public func clear() {
 
 // MARK: Utils
 
-private func functionAddress<A, R>(of f: @escaping (A) throws -> R) -> Int {
+public func functionAddress<A, R>(of f: @escaping (A) throws -> R) -> Int {
   let (_, lo) = unsafeBitCast(f, to: (Int, Int).self)
   let offset = MemoryLayout<Int>.size == 8 ? 16 : 12
   let pointer = UnsafePointer<Int>(bitPattern: lo + offset)!
