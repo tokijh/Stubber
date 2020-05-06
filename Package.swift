@@ -13,6 +13,11 @@ let package = Package(
   targets: [
     .target(name: "Stubber"),
     .testTarget(name: "StubberTests", dependencies: ["Stubber"]),
+
+    .target(name: "Service"),
+    .target(name: "ServiceStub", dependencies: ["Service", "Stubber"]),
+    .target(name: "Application", dependencies: ["Service", "Stubber"]),
+    .testTarget(name: "ApplicationTests", dependencies: ["Application", "ServiceStub", "Stubber"]),
   ],
   swiftLanguageVersions: [.v5]
 )
